@@ -1,0 +1,59 @@
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'build/libs'
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.google.protobuf:protobuf-java:3.23.4'
+    implementation files('build/libs/PongService-0.0.1.jar')
+    implementation files('build/libs/PongService-0.0.1-plain.jar')
+
+    //grpc
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.66.0'
+    implementation 'io.grpc:grpc-protobuf:1.66.0'
+    implementation 'io.grpc:grpc-stub:1.66.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+
+
+    testImplementation "org.mockito:mockito-core"
+    testImplementation "org.mockito:mockito-junit-jupiter"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+
+//    implementation "org.springframework.boot:spring-boot-autoconfigure"
+//    implementation "com.betpawa.grpc:client-starter"
+//    implementation "com.betpawa.grpc:client-starter:2024.8.30.08a0038"
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
