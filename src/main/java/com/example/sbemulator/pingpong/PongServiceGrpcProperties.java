@@ -8,5 +8,5 @@ import lombok.Data;
 @ConfigurationProperties("grpc.pongservice")
 public class PongServiceGrpcProperties {
     private String host = "localhost";
-    private Integer port = 9090;
+    private Integer port = 6565;
 }

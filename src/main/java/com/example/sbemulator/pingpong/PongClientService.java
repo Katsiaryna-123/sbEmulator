@@ -13,7 +13,6 @@ import proto.PongServiceGrpc;
 public class PongClientService {
     
     private final PongServiceGrpc.PongServiceBlockingStub blockingStub;
-
     
     public String getPong() {
         try {
@@ -24,5 +23,4 @@ public class PongClientService {
             throw new RuntimeException("Error while calling gRPC service", e);
         }
     }
-    
 }

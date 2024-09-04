@@ -18,9 +18,10 @@ public class PongServiceGrpcConfig {
                                     .usePlaintext() // For simplicity, plaintext is used. Configure TLS for production.
                                     .build();
     }
-    
+
     @Bean
     public PongServiceGrpc.PongServiceBlockingStub pongServiceBlockingStub(ManagedChannel channel) {
-        return PongServiceGrpc.newBlockingStub(channel);
+        return PongServiceGrpc.newBlockingStub
+                                      (channel);
     }
 }
